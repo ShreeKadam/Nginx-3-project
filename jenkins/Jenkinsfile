@@ -12,15 +12,17 @@ pipeline {
       }
     }
 
-    stage('Terraform Init & Apply') {
-      steps {
-        sh '''
-          cd infra
-          terraform init
-          terraform apply -auto-approve
-        '''
-      }
+  stage('Terraform Init & Apply') {
+    steps {
+        dir('terrafrom') {
+            sh '''
+                terraform init
+                terraform apply -auto-approve
+            '''
+        }
     }
+}
+
 
     stage('Install NGINX via Ansible') {
       steps {
