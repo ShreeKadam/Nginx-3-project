@@ -1,0 +1,10 @@
+- name: Install NGINX on Private Instance
+  hosts: tag_Name_PrivateInstance
+  become: yes
+
+  tasks:
+    - name: Install NGINX
+      apt:
+        name: nginx
+        state: present
+        update_cache: yes
